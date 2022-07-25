@@ -23,7 +23,7 @@ function App() {
             <Route path="/transactions/new" element={<New />} />
             <Route path="/transactions/:index" element={<Show />} />
             <Route path="/transactions/:index/edit" element={<Edit />} />
-            <Route path="*" element={<FourOFour />} />
+            <Route path="/*" element={<FourOFour />} />
           </Routes>
       </Router>
     </div>

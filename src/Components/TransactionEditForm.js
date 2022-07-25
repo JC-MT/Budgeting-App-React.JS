@@ -1,29 +1,40 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios'
 const API = process.env.REACT_APP_API_URL
 
-function TransactionNewForm() {
+function TransactionEditForm() {
+    let { index } = useParams();
   const navigate = useNavigate()
+
   const [transaction, setTransaction] = useState({
-    item_name: "",
-    amount: 0,
+    item_name: 0,
+    amount: "",
     date: "",
     from: "",
     category: "",
   });
 
   const handleTextChange = (event) => {
-    console.log(transaction)
     setTransaction({ ...transaction, [event.target.name]: event.target.value });
   };
 
+  useEffect(() => {
+    axios.get(`${API}/transactions/${index}`)
+    .then((res) => {
+        setTransaction(res.data)
+    })
+    .catch((err) => {
+      console.warn(err)
+    })
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post(`${API}/transactions`, transaction)
+    axios.put(`${API}/transactions/${index}`, transaction)
     .then(() => {
-      alert("We've added your new transaction.")
-      navigate("/transactions")
+      alert("We've updated your transaction.")
+      navigate(`/transactions/${index}`)
     })
     .catch((err) => {
       console.warn(err)
@@ -53,6 +64,7 @@ function TransactionNewForm() {
                         </label>
                         <input
                           type="text"
+                          value={transaction.date}
                           class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                           placeholder="MM/DD/YYYY"
                           name="date"
@@ -68,8 +80,8 @@ function TransactionNewForm() {
                       </label>
                       <input
                         type="text"
+                        value={transaction.item_name}
                         name="item_name"
-                        placeholder=""
                         className="p-2 mt-1 border focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         onChange={handleTextChange}
                       />
@@ -84,6 +96,7 @@ function TransactionNewForm() {
                       </label>
                       <input
                         type="number"
+                        value={transaction.amount}
                         name="amount"
                         placeholder="-300 or 300"
                         className="p-2 mt-1 border focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
@@ -100,6 +113,7 @@ function TransactionNewForm() {
                       </label>
                       <input
                         id="category"
+                        value={transaction.category}
                         name="category"
                         onChange={handleTextChange}
                         placeholder="Income, Taxes, Groceries..."
@@ -116,6 +130,7 @@ function TransactionNewForm() {
                       </label>
                       <input
                         type="text"
+                        value={transaction.from}
                         name="from"
                         placeholder="Include any important details"
                         className="p-2 border mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
@@ -130,7 +145,7 @@ function TransactionNewForm() {
                     className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     onClick={handleSubmit}
                   >
-                    CREATE NEW ITEM
+                    UPDATE ITEM
                   </button>
                 </div>
               </div>
@@ -142,4 +157,4 @@ function TransactionNewForm() {
   );
 }
 
-export default TransactionNewForm;
+export default TransactionEditForm;
