@@ -2,8 +2,8 @@ import TransactionDetails from "../Components/TransactionDetails";
 
 function Show() {
   return (
-    <div className="">
-      <h2>Show</h2>
+    <div>
+      <h2 className="text-[50px] text-center">Item details</h2>
       <TransactionDetails />
     </div>
   );

@@ -1,6 +1,6 @@
 function FourOFour() {
     return (
-      <div>
+      <div className="text-[80px] text-center">
         <h1>Sorry, no page found</h1>
       </div>
     );

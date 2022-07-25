@@ -6,7 +6,7 @@ function Transaction({ transaction, index }) {
         <span className="basis-1/4 border-b">
             {transaction.date}
         </span>
-        <span className="basis-1/4 border-b">
+        <span className="basis-1/4 border-b hover:bg-lime-50 hover:underline ">
             <Link to={`/transactions/${index}`}>{transaction.item_name}</Link>
         </span>
         <span className="basis-2/4 text-right border-b">

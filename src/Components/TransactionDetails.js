@@ -30,27 +30,43 @@ function TransactionDetails() {
       });
   };
   return (
-    <article>
-      <h1>{transaction.item_name}</h1>
-      <div className="showNavigation">
+    <div>
+
+        <article className='px-[20%]'>
+        <h1 className="text-[30px]">Name: {transaction.item_name}</h1>
+        <h3 className='text-[30px]'>Amount: {transaction.amount}</h3>
+        <h3 className='text-[20px]'>Recorded on: {transaction.date}</h3>
+            <h3 className='text-[20px]'>Category: {transaction.category}</h3>
+            <p className='text-[20px]'>From: {transaction.from}</p>
+        </article>
+      <div className="px-[20%] flex flex-row justify-evenly p-4">
         <div>
           {' '}
           <Link to={`/transactions`}>
-            <button>Back</button>
+            <button className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              Back
+            </button>
           </Link>
         </div>
         <div>
           {' '}
           <Link to={`/transactions/${index}/edit`}>
-            <button>Edit</button>
+            <button className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              Edit
+            </button>
           </Link>
         </div>
         <div>
           {' '}
-          <button onClick={handleDelete}>Delete</button>
+          <button
+            className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
         </div>
       </div>
-    </article>
+    </div>
   );
 }
 
