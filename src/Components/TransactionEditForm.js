@@ -8,8 +8,8 @@ function TransactionEditForm() {
   const navigate = useNavigate();
 
   const [transaction, setTransaction] = useState({
-    item_name: 0,
-    amount: '',
+    item_name: '',
+    amount: 0,
     date: '',
     from: '',
     category: ''
