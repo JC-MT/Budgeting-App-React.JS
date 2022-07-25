@@ -19,8 +19,8 @@ function Index() {
     <div>
       <h2 className="text-[50px] text-center">
         Bank Account Total: ${transactions.reduce((acc, num) => {
-          console.log(acc, num, transactions)
-            return acc += Number(num.amount)
+          acc += Number(num.amount)
+          return acc;
         }, 0 )}
       </h2>
       <Transactions transactions={transactions} />
