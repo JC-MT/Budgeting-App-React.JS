@@ -14,12 +14,13 @@ function Index() {
       .catch((err) => {
         console.warn(err);
       });
+
   }, []);
   return (
     <div>
       <h2 className="text-[50px] text-center">
         Bank Account Total: ${(transactions ? transactions.reduce((acc, num) => {
-          acc += Number(num.amount)
+          Number(acc) += Number(num.amount)
           return acc;
         }, 0) : "0")}
       </h2>
