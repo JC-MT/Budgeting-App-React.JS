@@ -9,22 +9,18 @@ function Index() {
     axios
       .get(`${API}/transactions`)
       .then((res) => {
-        console.log(res.data);
         setTransactions(res.data);
       })
       .catch((err) => {
         console.warn(err);
       });
-    // eslint-disable-next-line
-  }, []);
+  }, [transactions]);
   return (
     <div>
       <h2 className="text-[50px] text-center">
-        Bank Account Total: ${transactions.map((transaction) => {
-            let total = 0
-            total += transaction.amount
-            return total 
-        })}
+        Bank Account Total: ${transactions.reduce((acc, num) => {
+            return acc += num.amount
+        }, 0 )}
       </h2>
       <Transactions transactions={transactions} />
     </div>
