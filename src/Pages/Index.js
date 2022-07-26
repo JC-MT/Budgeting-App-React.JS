@@ -14,15 +14,20 @@ function Index() {
       .catch((err) => {
         console.warn(err);
       });
-
   }, []);
+
+  const bankTotal = (transactions) => {
+    let total = transactions.reduce(function (acc, num) {
+      acc += Number(num.amount);
+      return acc;
+    }, 0);
+    return total
+  };
+
   return (
     <div>
       <h2 className="text-[50px] text-center">
-        Bank Account Total: ${(transactions ? transactions.reduce((acc, num) => {
-          Number(acc) += Number(num.amount)
-          return acc;
-        }, 0) : "0")}
+        Bank Account Total: ${bankTotal(transactions)}
       </h2>
       <Transactions transactions={transactions} />
     </div>
