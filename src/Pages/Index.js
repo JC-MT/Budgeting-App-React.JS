@@ -14,7 +14,7 @@ function Index() {
       .catch((err) => {
         console.warn(err);
       });
-  }, []);
+  }, [transactions]);
 
   const bankTotal = (transactions) => {
     let total = transactions.reduce(function (acc, num) {
