@@ -14,7 +14,7 @@ import NavBar from "./Components/NavBar";
 function App() {
 
   return (
-    <div className="App">
+    <div className="bg-slate-50">
       <Router>
         <NavBar />
           <Routes>
