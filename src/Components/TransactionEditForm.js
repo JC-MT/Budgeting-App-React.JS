@@ -24,6 +24,7 @@ function TransactionEditForm() {
       .get(`${API}/transactions/${index}`)
       .then((res) => {
         setTransaction(res.data);
+        console.log(transaction)
       })
       .catch((err) => {
         console.warn(err);
@@ -56,8 +57,8 @@ function TransactionEditForm() {
             <form>
               <div className="shadow overflow-hidden sm:rounded-md">
                 <div className="px-4 py-5 bg-white sm:p-6">
-                  <div className="grid grid-cols-2 gap-6">
-                    <div class="datepicker relative form-floating mb-3 xl:w-96">
+                  <div className="grid gap-2 sm:gap-4">
+                    <div class="datepicker relative form-floating mb-3">
                       <label
                         htmlFor="date"
                         className="block text-sm font-medium text-gray-700"
@@ -65,15 +66,14 @@ function TransactionEditForm() {
                         Date
                       </label>
                       <input
-                        type="text"
+                        type="date"
                         value={transaction.date}
-                        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                        placeholder="MM/DD/YYYY"
+                        class="form-control block px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         name="date"
                         onChange={handleTextChange}
                       />
                     </div>
-                    <div className="row-start-2 ">
+                    <div className="row-start-2 w-full sm:w-1/2">
                       <label
                         htmlFor="name"
                         className="block text-sm font-medium text-gray-700"
@@ -84,7 +84,7 @@ function TransactionEditForm() {
                         type="text"
                         value={transaction.item_name}
                         name="item_name"
-                        className="p-2 mt-1 border focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                        className="w-full p-2 mt-1 border focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border-gray-300 rounded-md"
                         onChange={handleTextChange}
                       />
                     </div>
@@ -101,7 +101,7 @@ function TransactionEditForm() {
                         value={transaction.amount}
                         name="amount"
                         placeholder="-300 or 300"
-                        className="p-2 mt-1 border focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                        className="w-full sm:w-1/2 p-2 mt-1 border focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border-gray-300 rounded-md"
                         onChange={handleTextChange}
                       />
                     </div>
@@ -119,11 +119,11 @@ function TransactionEditForm() {
                         name="category"
                         onChange={handleTextChange}
                         placeholder="Income, Taxes, Groceries..."
-                        className="p-2 mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className="p-2 mt-1 block w-full sm:w-1/2 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
                     </div>
 
-                    <div className="row-start-5 col-span-2">
+                    <div className="row-start-5">
                       <label
                         htmlFor="from"
                         className="block text-sm font-medium text-gray-700"

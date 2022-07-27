@@ -33,11 +33,11 @@ function TransactionDetails() {
     <div>
 
         <article className='px-[20%]'>
-        <h1 className="text-[30px]">Name: {transaction.item_name}</h1>
-        <h3 className='text-[30px]'>Amount: {transaction.amount}</h3>
+        <h1 className="border-t text-[30px]">Name: {transaction.item_name}</h1>
+        <h3 className='text-[30px]'>Amount: ${transaction.amount}</h3>
         <h3 className='text-[20px]'>Recorded on: {transaction.date}</h3>
             <h3 className='text-[20px]'>Category: {transaction.category}</h3>
-            <p className='text-[20px]'>From: {transaction.from}</p>
+            <p className='border-b text-[20px]'>From: {transaction.from}</p>
         </article>
       <div className="px-[20%] flex flex-row justify-evenly p-4">
         <div>

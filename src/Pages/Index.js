@@ -1,3 +1,4 @@
+import { PieChart } from 'react-minimal-pie-chart';
 import Transactions from '../Components/Transactions';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -14,8 +15,8 @@ function Index() {
       })
       .catch((err) => {
         console.warn(err.message);
-        document.getElementById('status').innerText = err.message
-        document.getElementById('spinner').className = 'invisible'
+        document.getElementById('status').innerText = err.message;
+        document.getElementById('spinner').className = 'invisible';
       });
   }, []);
 
@@ -42,7 +43,7 @@ function Index() {
     }
     return accountTotal;
   };
-
+console.log(transactions)
   return (
     <div>
       <h2 id="status" className="text-[50px] text-center">
@@ -50,6 +51,16 @@ function Index() {
       </h2>
       {spinner}
       <Transactions transactions={transactions} />
+      <PieChart
+      className='text-[7px]'
+      viewBoxSize={[350, 350]}
+      center={[175,80]}
+      label={({dataEntry}) =>
+      dataEntry.title
+      }
+        data={transactions}
+      />
+      ;
     </div>
   );
 }

@@ -2,8 +2,8 @@ import TransactionEditForm from "../Components/TransactionEditForm";
 
 function Edit() {
   return (
-    <div className="text-[50px] text-center">
-      <h2>Edit your item</h2>
+    <div>
+      <h2 className="text-[50px] text-center">Edit your item</h2>
       <TransactionEditForm />
     </div>
   );
