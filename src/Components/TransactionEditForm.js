@@ -29,7 +29,7 @@ function TransactionEditForm() {
       .catch((err) => {
         console.warn(err);
       });
-  }, [transaction]);
+  }, [transaction, index]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
