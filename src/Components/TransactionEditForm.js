@@ -28,7 +28,7 @@ function TransactionEditForm() {
       .catch((err) => {
         console.warn(err);
       });
-  }, [index]);
+  }, [transaction]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
